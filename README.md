@@ -20,7 +20,7 @@ _CDISC metadata used_
 ##CdiscStandardLoader
 Python class to import CDISC metadata into Neo4j [details](cdisc_model_managers/README.md)
 
-[source code](cdisc_model_manager/cdisc_standard_loader.py)
+[source code](cdisc_model_managers/cdisc_standard_loader.py)
 
 ##
 
