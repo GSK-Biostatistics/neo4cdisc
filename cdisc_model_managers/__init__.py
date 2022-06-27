@@ -1,0 +1,1 @@
+from model_managers.model_manager import ModelManager
