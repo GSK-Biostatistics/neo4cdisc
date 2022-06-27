@@ -17,7 +17,7 @@ _CDISC metadata used_
 *CDISC data used*
 - cdiscpilot01 - from [Phuse Scripts on Github](https://github.com/phuse-org/phuse-scripts/tree/master/data/sdtm/cdiscpilot01)
 
-##CdiscStandardLoader
+## CdiscStandardLoader
 Python class to import CDISC metadata into Neo4j [details](cdisc_model_managers/README.md)
 
 [source code](cdisc_model_managers/cdisc_standard_loader.py)
