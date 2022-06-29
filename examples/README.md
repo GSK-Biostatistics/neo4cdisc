@@ -1,12 +1,16 @@
 # Examples
 
-reshape_cdisc.py
 
-comparison_cdiscpilot.py
+## reshape_cdisc.py
+Example of loading SDTM model, implementation guide and controlled terminology into Neo4j.
 
-download_cdisc_pilot.py
+##comparison_cdiscpilot.py
+Compares data loaded into Neo4j with xpt files downloaded from Github.
 
-load_sdtm_metadata.py
+##download_cdisc_pilot.py
+Downloads 
+
+##load_sdtm_metadata.py
 
 
 
