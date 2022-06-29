@@ -1,12 +1,11 @@
-from data_providers.sdtm_data_provider import SDTMDataProvider
 import utils.comparison_utils
 import datacompy
 import numpy as np
 import re
 import time
+from cdisc_data_providers.sdtm_data_provider import SDTMDataProvider
 from colorama import init, Fore, Back
 from data_loaders import file_data_loader
-from neointerface import NeoInterface
 import logging
 
 init(autoreset=True)

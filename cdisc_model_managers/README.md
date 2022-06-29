@@ -1,6 +1,6 @@
 # cdisc_standard_loader
 
-CdiscStandardLoader is a subclass of the *ModelApplier* class ([model_applier.py](https://github.com/GSK-Biostatistics/tab2neo/model_appliers/model_applier.py)) which has methods for restructuring data loaded into Neo4j. 
+[CdiscStandardLoader](cdisc_standard_loader.py) is a subclass of the *tab2neo.ModelApplier* class ([model_applier.py](https://github.com/GSK-Biostatistics/tab2neo/model_appliers/model_applier.py)) which has methods for restructuring data loaded into Neo4j. 
 
 Methods:
 - load_standard - Loads the standards files: SDTM Model metadata, SDTM Implementation Guide metadata and SDTM Controlled Terminology into Neo4j.
@@ -12,7 +12,6 @@ Methods:
 - link_cdisc - Adds relationships between metadata
 - load_link_sdtm_ttl - Adds relationsips and properties found in RDF [sdtm-1-3.ttl](../cdisc_data/sdtm-1-3.ttl)
 
-[cdisc_standard_loader](cdisc_standard_loader.py).
 
 
 

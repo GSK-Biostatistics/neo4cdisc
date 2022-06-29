@@ -1,12 +1,15 @@
 import os
 import time
-from cdisc_model_managers.cdisc_standard_loader import CdiscStandardLoader
+import requests
+# Start tab2neo
 from model_managers.model_manager import ModelManager
 from data_loaders import file_data_loader
 from model_appliers import ModelApplier
 from data_providers import DataProvider
+# End tab2neo
 from github import Github, UnknownObjectException, BadCredentialsException
-import requests
+from cdisc_model_managers.cdisc_standard_loader import CdiscStandardLoader
+
 from pathlib import Path
 
 def download_file_from_github(domain, url_file, save_folder, file_name):
