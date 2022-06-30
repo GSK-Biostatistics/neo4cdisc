@@ -5,21 +5,20 @@ After cloning the repository.
 ## Install python virtual environment
 
 - Open command/terminal window
-- Change location to your local (path)/GitHub/neo4cdisc folder.
-- Execute: *python -m venv ./venv*
-- Execute: .\venv\Scripts\activate
-
-N.B! Always make sure you are in the activated virtual environment
-
-1. pip install -r requirements.txt
-2. (You should be prompted to sign in to github via browser, if the repository is private)
-3. Note. Might need to upgrade pip and redo the install, use message from installer:
+- Change location to your local ```(path)/GitHub/neo4cdisc``` folder.
+- Execute: ```python -m venv ./venv```
+- Execute: ```.\venv\Scripts\activate```
+- Execute: ```pip install -r requirements.txt```
+- (You should be prompted to sign in to github via browser, if the repository is private)
+- Note. Might need to upgrade pip and redo the install, use message from installer:
   (path_to_your_local_install)/neo4cdisc/venv/scripts/python.exe -m pip install --upgrade pip
 
+&ensp;&thinsp;&ensp;&thinsp;&ensp;&thinsp;Note. Always make sure you are in the activated virtual environment when executing pip commands.
 
-N.B! Keep an eye on the progress bar for when Pycharm updates indices
+
 
 # Pycharm
+Note. Keep an eye on the Pycharm progress bar so that Pycharm has completed updating indices etc. before trying to run any program.
 
 ### Configure python interpreter to the one you just created
 - Configure python interpreter for running scripts
@@ -31,9 +30,15 @@ N.B! Keep an eye on the progress bar for when Pycharm updates indices
     - File->Settings : Tools->Python Integrated Tools
     - Testing->Default test runner: pytest
 
-### Add environment variables (to python and debug)
-- Click "Add configuration"
-- Copy the below adding your details
+### Set working directory and add environment variables
+If pytests are to be run, repeat the steps below but change **Templates->Python** to **Templates->Python Tests->Pytest**
+
+- Click _Edit configurations_
+- Click **Templates->Python**
+- Click folder icon next to **Working directory**
+- Select the root directory of your neo4cdisc repository (should come up automatically)
+- Click folder icon next to **Environment variables**
+- Copy the below parameters, adding your specific details (NEO4J parameters are the only required parameters for executing current examples)
 ```
 AZ_CONTAINER=us6fnddev001
 AZ_CLIENT_SECRET=
@@ -49,5 +54,3 @@ GIT_TOKEN_RW=
 CLD_API_HOST=http://10.40.225.78:8000/items
 ```
 
-### Set working directory
-(path)/Github/neo4cdisc
