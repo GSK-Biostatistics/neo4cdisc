@@ -1,5 +1,5 @@
 import pytest
-from data_providers import sdtm_data_provider
+from cdisc_data_providers import sdtm_data_provider
 import pandas as pd
 import json
 import os
@@ -160,7 +160,7 @@ def test_neo_validate_access(dp):
         {'classes': classes}
     )
     dp.query("""
-    WITH [['ak956494', 'Study Lead'], ['external', 'External Researcher']] as coll
+    WITH [['my_login', 'Study Lead'], ['external', 'External Researcher']] as coll
     UNWIND coll as pair
     WITH pair[0] as user_id, pair[1] as role_name
     MERGE (user:User{id:user_id})-[r1:HAS_ROLE]->(role:`User Role`{name:role_name})
