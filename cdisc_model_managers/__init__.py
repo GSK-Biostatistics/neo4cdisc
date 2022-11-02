@@ -1,1 +1,1 @@
-from model_managers.model_manager import ModelManager
+from cdisc_model_managers.cdisc_standard_loader import CdiscStandardLoader
