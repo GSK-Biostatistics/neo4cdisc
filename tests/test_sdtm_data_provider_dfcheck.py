@@ -2,7 +2,7 @@ import pandas as pd
 import pytest
 import datacompy
 
-from data_providers.sdtm_data_provider import SDTMDataProvider
+from cdisc_data_providers.sdtm_data_provider import SDTMDataProvider
 @pytest.fixture(scope="module")
 def dp():
     pass

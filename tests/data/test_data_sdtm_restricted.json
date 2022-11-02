@@ -1,0 +1,525 @@
+{
+  "nodes": [
+    {
+      "id": "n0",
+      "position": {
+        "x": 680.8781636558867,
+        "y": 1695.9753438598534
+      },
+      "caption": "",
+      "labels": [
+        "Data Extraction Standard"
+      ],
+      "properties": {
+        "_tag_": "test_standard"
+      },
+      "style": {
+        "border-color": "#f44e3b",
+        "node-color": "#f44e3b"
+      }
+    },
+    {
+      "id": "n2",
+      "position": {
+        "x": 680.8781636558867,
+        "y": 1403.7845072516243
+      },
+      "caption": "",
+      "labels": [
+        "Source Data Table"
+      ],
+      "properties": {
+        "_domain_": "AE",
+        "SortOrder": [
+          "TC1",
+          "TC2"
+        ]
+      },
+      "style": {
+        "border-color": "#a4dd00",
+        "node-color": "#a4dd00"
+      }
+    },
+    {
+      "id": "n3",
+      "position": {
+        "x": 874.6549306078302,
+        "y": 1185.09283025529
+      },
+      "caption": "",
+      "labels": [
+        "Source Data Column"
+      ],
+      "properties": {
+        "Order": 1,
+        "_columnname_": "TC1",
+        "_domain_": "AE"
+      },
+      "style": {
+        "border-color": "#009ce0",
+        "node-color": "#009ce0"
+      }
+    },
+    {
+      "id": "n4",
+      "position": {
+        "x": 487.1013967039389,
+        "y": 1185.0928302552898
+      },
+      "caption": "",
+      "labels": [
+        "Source Data Column"
+      ],
+      "properties": {
+        "_columnname_": "TC2",
+        "_domain_": "AE",
+        "Core": "Required"
+      },
+      "style": {
+        "node-color": "#009ce0",
+        "border-color": "#009ce0"
+      }
+    },
+    {
+      "id": "n7",
+      "position": {
+        "x": 268.4097197076047,
+        "y": 966.4011532589554
+      },
+      "caption": "",
+      "labels": [
+        "Class"
+      ],
+      "properties": {
+        "count": 2,
+        "label": "Study",
+        "short_label": "STUDYID"
+      },
+      "style": {}
+    },
+    {
+      "id": "n8",
+      "position": {
+        "x": 487.1013967039387,
+        "y": 747.7094762626217
+      },
+      "caption": "",
+      "labels": [
+        "Relationship"
+      ],
+      "properties": {
+        "FROM.Class.label": "Adverse Events",
+        "TO.Class.label": "Study",
+        "relationship_type": "test_rel_1"
+      },
+      "style": {
+        "node-color": "#fa28ff",
+        "border-color": "#fa28ff"
+      }
+    },
+    {
+      "id": "n9",
+      "position": {
+        "x": 1093.3466076041684,
+        "y": 966.4011532589523
+      },
+      "caption": "",
+      "labels": [
+        "Class"
+      ],
+      "properties": {
+        "label": "test_class_2",
+        "short_label": "tc2",
+        "count": 2
+      },
+      "style": {}
+    },
+    {
+      "id": "n10",
+      "position": {
+        "x": 874.6549306078348,
+        "y": 747.7094762626217
+      },
+      "caption": "",
+      "labels": [
+        "Relationship"
+      ],
+      "properties": {
+        "FROM.Class.label": "Adverse Events",
+        "TO.Class.label": "test_class_2",
+        "relationship_type": "test_rel_2"
+      },
+      "style": {
+        "node-color": "#fa28ff",
+        "border-color": "#fa28ff"
+      }
+    },
+    {
+      "id": "n11",
+      "position": {
+        "x": 680.8781636558867,
+        "y": 462.0747344849358
+      },
+      "caption": "",
+      "labels": [
+        "Class",
+        "Dataset"
+      ],
+      "properties": {
+        "label": "Adverse Events",
+        "short_label": "AE",
+        "Sort Order": [
+          "STUDYID",
+          "tc2"
+        ],
+        "count": 4
+      },
+      "style": {
+        "border-color": "#16a5a5",
+        "node-color": "#16a5a5"
+      }
+    },
+    {
+      "id": "n19",
+      "position": {
+        "x": 268.4097197076047,
+        "y": 503.4664855885096
+      },
+      "caption": "",
+      "labels": [
+        "Study"
+      ],
+      "properties": {
+        "rdfs:label": "test_study_4"
+      },
+      "style": {}
+    },
+    {
+      "id": "n20",
+      "position": {
+        "x": 75,
+        "y": 503.4664855885096
+      },
+      "caption": "",
+      "labels": [
+        "Study"
+      ],
+      "properties": {
+        "rdfs:label": "test_study_3"
+      },
+      "style": {}
+    },
+    {
+      "id": "n22",
+      "position": {
+        "x": 1093.3466076041684,
+        "y": 503.4664855885096
+      },
+      "caption": "",
+      "labels": [
+        "test_class_2"
+      ],
+      "properties": {
+        "rdfs:label": "test_data_1"
+      },
+      "style": {}
+    },
+    {
+      "id": "n23",
+      "position": {
+        "x": 1360.6220626009083,
+        "y": 503.4664855885096
+      },
+      "caption": "",
+      "labels": [
+        "test_class_2"
+      ],
+      "properties": {
+        "rdfs:label": "test_data_2"
+      },
+      "style": {}
+    },
+    {
+      "id": "n27",
+      "position": {
+        "x": 809.5393961641732,
+        "y": 239.22694281615054
+      },
+      "caption": "",
+      "labels": [
+        "Record",
+        "Adverse Events"
+      ],
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n28",
+      "position": {
+        "x": 680.8781636558867,
+        "y": 50
+      },
+      "caption": "",
+      "labels": [
+        "Record",
+        "Adverse Events"
+      ],
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n29",
+      "position": {
+        "x": 1556.281275274611,
+        "y": 966.4011532589554
+      },
+      "caption": "",
+      "style": {},
+      "labels": [
+        "User Role"
+      ],
+      "properties": {
+        "name": "test_role"
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "id": "n1",
+      "fromId": "n0",
+      "toId": "n2",
+      "type": "HAS_TABLE",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n2",
+      "fromId": "n2",
+      "toId": "n3",
+      "type": "HAS_COLUMN",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n3",
+      "fromId": "n2",
+      "toId": "n4",
+      "type": "HAS_COLUMN",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n6",
+      "fromId": "n4",
+      "toId": "n7",
+      "type": "MAPS_TO_CLASS",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n7",
+      "fromId": "n8",
+      "toId": "n7",
+      "type": "TO",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n8",
+      "fromId": "n10",
+      "toId": "n9",
+      "type": "TO",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n9",
+      "fromId": "n10",
+      "toId": "n11",
+      "type": "FROM",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n10",
+      "fromId": "n3",
+      "toId": "n9",
+      "type": "MAPS_TO_CLASS",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n17",
+      "fromId": "n10",
+      "toId": "n3",
+      "type": "MAPS_TO_COLUMN",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n18",
+      "fromId": "n8",
+      "toId": "n4",
+      "type": "MAPS_TO_COLUMN",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n24",
+      "fromId": "n2",
+      "toId": "n11",
+      "type": "MAPS_TO_CLASS",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n25",
+      "fromId": "n8",
+      "toId": "n11",
+      "type": "FROM",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n26",
+      "fromId": "n20",
+      "toId": "n7",
+      "type": "IS_A",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n27",
+      "fromId": "n19",
+      "toId": "n7",
+      "type": "IS_A",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n29",
+      "fromId": "n22",
+      "toId": "n9",
+      "type": "IS_A",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n30",
+      "fromId": "n23",
+      "toId": "n9",
+      "type": "IS_A",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n36",
+      "fromId": "n27",
+      "toId": "n11",
+      "type": "IS_A",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n37",
+      "fromId": "n27",
+      "toId": "n19",
+      "type": "test_rel_1",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n38",
+      "fromId": "n28",
+      "toId": "n11",
+      "type": "IS_A",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n39",
+      "fromId": "n28",
+      "toId": "n20",
+      "type": "test_rel_1",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n42",
+      "fromId": "n27",
+      "toId": "n22",
+      "type": "test_rel_2",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n43",
+      "fromId": "n28",
+      "toId": "n23",
+      "type": "test_rel_2",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n44",
+      "type": "ACCESS_RESTRICTED",
+      "style": {},
+      "properties": {},
+      "fromId": "n29",
+      "toId": "n9"
+    }
+  ],
+  "style": {
+    "font-family": "sans-serif",
+    "background-color": "#ffffff",
+    "background-image": "",
+    "background-size": "100%",
+    "node-color": "#ffffff",
+    "border-width": 4,
+    "border-color": "#000000",
+    "radius": 50,
+    "node-padding": 5,
+    "node-margin": 2,
+    "outside-position": "auto",
+    "node-icon-image": "",
+    "node-background-image": "",
+    "icon-position": "inside",
+    "icon-size": 64,
+    "caption-position": "inside",
+    "caption-max-width": 200,
+    "caption-color": "#000000",
+    "caption-font-size": 50,
+    "caption-font-weight": "normal",
+    "label-position": "inside",
+    "label-display": "pill",
+    "label-color": "#000000",
+    "label-background-color": "#ffffff",
+    "label-border-color": "#000000",
+    "label-border-width": 4,
+    "label-font-size": 40,
+    "label-padding": 5,
+    "label-margin": 4,
+    "directionality": "directed",
+    "detail-position": "inline",
+    "detail-orientation": "parallel",
+    "arrow-width": 5,
+    "arrow-color": "#000000",
+    "margin-start": 5,
+    "margin-end": 5,
+    "margin-peer": 20,
+    "attachment-start": "normal",
+    "attachment-end": "normal",
+    "relationship-icon-image": "",
+    "type-color": "#000000",
+    "type-background-color": "#ffffff",
+    "type-border-color": "#000000",
+    "type-border-width": 0,
+    "type-font-size": 16,
+    "type-padding": 5,
+    "property-position": "outside",
+    "property-alignment": "colon",
+    "property-color": "#000000",
+    "property-font-size": 16,
+    "property-font-weight": "normal"
+  }
+}

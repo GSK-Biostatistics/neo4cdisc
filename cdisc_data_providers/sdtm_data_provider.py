@@ -29,6 +29,8 @@ class SDTMDataProvider(DataProvider):
             print("meta", meta)
         if meta:
             classes = (['Study'] if 'Study' not in meta[0]['classes'] else []) + meta[0]['classes']
+            non_valid, no_access = [], []
+
             if self.check_for_refarctored:
                 classes, non_valid = self.neo_validate_classes_to_extract(classes)
                 if non_valid:
@@ -43,7 +45,13 @@ class SDTMDataProvider(DataProvider):
                            class_ in classes]
             if self.debug:
                 print(f"Getting classes: {classes}")
+
             rels = meta[0]['rels']
+            excluded_classes = no_access + non_valid
+            if excluded_classes:
+                print(f'Excluding the following classes from rels: {excluded_classes}')
+                rels = self.filter_classes_from_rels(rels, excluded_classes)
+
             df = self.get_data_generic(labels=classes,
                                        rels=rels,
                                        where_map=where_map,
@@ -83,9 +91,17 @@ class SDTMDataProvider(DataProvider):
             # Sorting
             # check that variables for sorting in meta actaully exist
             sorting, sorting_excluded = [], []
-            # TODO sorting: Cypher query in neo_get_meta returns comma separated string and not a list
             if meta[0]['sorting']:
-                for col in meta[0]['sorting']:
+                if isinstance(meta[0]['sorting'], list):
+                    l_sorting = meta[0]['sorting']
+                elif isinstance(meta[0]['sorting'], str):
+                    if "," in meta[0]['sorting']:
+                        l_sorting = meta[0]['sorting'].split(",")
+                    else:
+                        l_sorting = [meta[0]['sorting']]
+                else:
+                    l_sorting = []
+                for col in l_sorting:
                     if col in df.columns:
                         sorting.append(col)
                     else:
@@ -138,7 +154,7 @@ class SDTMDataProvider(DataProvider):
         apoc.map.fromPairs(collect([sdc._columnname_, sdc.Order])) as order_dct,
         sdt['SortOrder'] as sorting
         """
-        # TODO sorting: statement "sdt['SortOrder'] as sorting" returns a comma separated string and not a list
+
         params = {'standard': standard, 'table': table}
         if self.debug:
             logging.debug(f"""
@@ -167,6 +183,25 @@ class SDTMDataProvider(DataProvider):
             return [r['Class'] for r in res]
         else:
             return []
+
+    def filter_classes_from_rels(self, rels, classes: list):
+        clean_rels = []
+        excluded_rels = []
+        for rels_dict in rels:
+            intersect = False
+            for class_ in classes:
+                if class_ in rels_dict.values():
+                    intersect = True
+
+            if not intersect:
+                clean_rels.append(rels_dict)
+            else:
+                excluded_rels.append(rels_dict)
+
+        if excluded_rels:
+            print(f'The following rels were excluded: {excluded_rels}')
+
+        return clean_rels
 
     def neo_validate_classes_to_extract(self, classes: list) -> ([], []):
         """
