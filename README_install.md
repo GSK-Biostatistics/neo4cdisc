@@ -1,22 +1,21 @@
 # Installation Instructions
 
-##Prerequisites
+##Prerequisite
 - Clone the repository.
-- Upgrade pip: pip install --upgrade pip
 
-## Setting up python virtual environment
+## Setting up Python Virtual Environment
 
 - Open command/terminal window
 - Change location to your local ```<add path>/neo4cdisc``` folder.
 - Execute: ```python -m venv ./venv```
 - Execute: ```.\venv\Scripts\activate```
+- Execute: ```pip install --upgrade pip```
 - Execute: ```pip install -r requirements.txt```
 - (You should be prompted to sign in to github via browser, if the repository is private)
 
 Note: Virtual Environment should always be activated before executing any pip commands.
 
-
-## Setting up Pycharm
+## Setting up Pycharm (Only if using Pycharm IDE)
 Note: Let the Pycharm complete updating the indices etc. before running the program. Progress can be seen at the bottom of the screen in Pycharm progress bar.
 
 ### Configure python interpreter
@@ -31,7 +30,7 @@ Note: Let the Pycharm complete updating the indices etc. before running the prog
 
 ### Set working directory and add environment variables
 
-- Click _Edit configurations_
+- Click **Run->Edit configuration** in the top menu bar
 - Click **Templates->Python**
 - Click folder icon next to **Working directory**
 - Select the root directory of your neo4cdisc repository (should come up automatically)
@@ -45,5 +44,5 @@ NEO4J_RDF_HOST=http://10.40.225.78:27474/rdf/
 GIT_TOKEN=
 ```
 
-To run pytests, repeat the above steps and replace **Templates->Python** to **Templates->Python Tests->Pytest** in step 2
+To run pytests, repeat the above steps and replace **Templates->Python** by **Templates->Python Tests->Pytest** in step 2.
 
