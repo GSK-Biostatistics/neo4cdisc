@@ -1,10 +1,13 @@
 # Installation Instructions
 
-##Prerequisite
+## Prerequisite
 - Clone the repository.
 
 ## Setting up Python Virtual Environment
 
+Python virtual environment can be setup by following any of the below paths.
+
+##### Path 1
 - Open command/terminal window
 - Change location to your local ```<add path>/neo4cdisc``` folder.
 - Execute: ```python -m venv ./venv```
@@ -15,10 +18,13 @@
 
 Note: Virtual Environment should always be activated before executing any pip commands.
 
+##### Path 2
+Open installation.bat file if using Windows machine or installation.sh if using Unix/Linux machine in file explorer and run it by double clicking on it to execute the steps in Path 1.
+
 ## Setting up Pycharm (Only if using Pycharm IDE)
 Note: Let the Pycharm complete updating the indices etc. before running the program. Progress can be seen at the bottom of the screen in Pycharm progress bar.
 
-### Configure python interpreter
+#### Configure python interpreter
 - Configure python interpreter for running scripts
     - File->Settings : Project: neo4cdisc ->Project Interpreter
     - Click 'gear' icon on top right to add a new interpreter
@@ -28,7 +34,7 @@ Note: Let the Pycharm complete updating the indices etc. before running the prog
     - File->Settings : Tools->Python Integrated Tools
     - Testing->Default test runner: pytest
 
-### Set working directory and add environment variables
+#### Set working directory and add environment variables
 
 - Click **Run->Edit configuration** in the top menu bar
 - Click **Templates->Python**
