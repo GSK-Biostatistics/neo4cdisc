@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 from model_appliers.model_applier import ModelApplier
-from cdisc_model_managers import ModelManager
+from model_managers import ModelManager
 import json
 from data_loaders import file_data_loader
 import re
