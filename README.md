@@ -41,7 +41,8 @@ standards_file   = "SDTMIG_v3.2.csv"
 sdtm_terminology = "CT2022Q1.csv"
 csl = CdiscStandardLoader(standards_folder=standards_folder, sdtm_file=standards_model, sdtmig_file=standards_file, terminology_file=sdtm_terminology)
 ```
-
+## Installation Instructions
+A detailed description of the installation steps can be found [here](README_install.md).
 
 
 
