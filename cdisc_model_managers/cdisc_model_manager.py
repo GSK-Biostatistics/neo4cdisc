@@ -105,10 +105,30 @@ class CdiscModelManager(ModelManager):
                ELSE
                    v.Variable
                END
-           SET v.create = False 
-           MERGE (d)<-[:FROM]-(:Relationship{relationship_type:v.Label})-[:TO]->(v)          
+           SET v.create = False
+           // for the DM table, like all the variable to the (soon to be) subject class, otherwise link to the dataset class
+           WITH d, v
+           CALL apoc.do.when(
+              d.Dataset in $datasets
+              ,
+              '
+              MERGE (d)<-[:FROM]-(:Relationship{relationship_type:v.Label})-[:TO]->(v)
+              WITH d, v
+              MATCH (s:Variable)
+              WHERE s.Dataset in $datasets AND s.Label = "Unique Subject Identifier"
+              MERGE (s)<-[:FROM]-(:Relationship{relationship_type:v.Label})-[:TO]->(v) 
+              '
+              ,
+              '
+              MERGE (d)<-[:FROM]-(:Relationship{relationship_type:v.Label})-[:TO]->(v) 
+              '
+              ,
+              {d:d, v:v, datasets:$datasets}
+           )
+           YIELD value
+           RETURN value           
            """
-        self.query(q)
+        self.query(q, {'datasets': ['DM']})
 
         print("Creating Class from dataElement and Relationship from Variable")
         q = """
@@ -159,6 +179,19 @@ class CdiscModelManager(ModelManager):
                MATCH (v)-[:HAS_CONTROLLED_TERM]->(t:Term)
                MERGE (dehl)-[:HAS_CONTROLLED_TERM]->(t)
                """
+        self.query(q)
+
+        # In the DM dateset, migrate the relationships going TO variables FROM the Unique Subject Identifier
+        # variable/relationship to the Subject Class (created from the USI variable above)
+        q = """
+        MATCH (var:Variable:Relationship)
+        WHERE var.Dataset = 'DM' AND var.Label = "Unique Subject Identifier"
+        MATCH (var)<-[from_rel:FROM]-(rel:Relationship)
+        DELETE from_rel
+        WITH rel
+        MATCH (subject:Class{label:'Subject'})
+        MERGE (rel)-[:FROM]->(subject)
+        """
         self.query(q)
 
         # Merging duplicate dehl Terms:
