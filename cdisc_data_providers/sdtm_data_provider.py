@@ -16,7 +16,6 @@ class SDTMDataProvider(DataProvider):
         super().__init__(*args, **kwargs)
 
     def get_data_sdtm(self, standard: str, domain: str, study=None, where_map=None, user_role=None):
-        self.verbose = True
         assert where_map is None or isinstance(where_map, dict)
         if not where_map:
             where_map = {}
