@@ -417,13 +417,12 @@ class CdiscModelManager(ModelManager):
            """
         self.query(q)
 
-        # TODO: Bug. This should also match on domain/dataset, now it get's multiple matches for e.g. identifiers, timing etc.
-        # setting order property on source data column
         q = f"""
-                   MATCH (sdc:`Source Data Column`), (v:`Variable`)
-                   WHERE sdc._columnname_ = v.Variable
-                   SET sdc.Order = v.Order
-                   """
+        MATCH (sdt:`Source Data Table`)-[:HAS_COLUMN]->(sdc:`Source Data Column`), (d:Dataset)-->(v:Variable)
+        WHERE sdt._domain_ = d.Dataset and sdc._columnname_ = v.Variable
+        SET sdc.Order = v.Order
+        SET sdc.Core = v.Core
+        """
 
         self.query(q)
 
