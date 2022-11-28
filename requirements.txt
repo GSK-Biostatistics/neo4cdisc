@@ -1,1 +1,2 @@
-git+https://${GIT_TOKEN}@github.com/GSK-Biostatistics/tab2neo.git
+git+https://${GIT_TOKEN_PUBLIC}@github.com/GSK-Biostatistics/tab2neo.git
+jupyter

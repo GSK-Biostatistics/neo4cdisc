@@ -47,7 +47,6 @@ NEO4J_HOST=neo4j://10.40.225.78:27687/
 NEO4J_USER=neo4j
 NEO4J_PASSWORD=
 NEO4J_RDF_HOST=http://10.40.225.78:27474/rdf/
-GIT_TOKEN=
 ```
 
 To run pytests, repeat the above steps and replace **Templates->Python** by **Templates->Python Tests->Pytest** in step 2.
