@@ -1,10 +1,9 @@
 import os
-import pandas as pd
 from model_appliers.model_applier import ModelApplier
-from model_managers import ModelManager
 import json
 from data_loaders import file_data_loader
 import re
+
 
 class CdiscStandardLoader(ModelApplier):
 
@@ -120,8 +119,6 @@ class CdiscStandardLoader(ModelApplier):
         """
         self.query(q)
 
-
-
     def reshape_sdtmig(self):
         # Change label on domain variables
         # Adaptions for load_link_sdtm_ttl
@@ -167,7 +164,6 @@ class CdiscStandardLoader(ModelApplier):
         RETURN count(n)
         """
         self.query(q)
-
 
         # Add property for codelist to variable
         # Adapt for generate_excel_based_model
@@ -289,7 +285,6 @@ class CdiscStandardLoader(ModelApplier):
         """
         self.query(q)
 
-
         # Add relationship to terms for variable
         # TODO: This might not be needed. Adds variable.`Value List` relationship to terms
         # 1. Add for when VALUE LIST is a semi-colon separated list
@@ -400,7 +395,8 @@ class CdiscStandardLoader(ModelApplier):
         """
         self.query(q)
 
-        # linking Variable to DataElements (on dataElementName there might be >1 DataElement per Variable - need to filter on VariableGrouping~ObservationClass)
+        # linking Variable to DataElements (on dataElementName there might be >1 DataElement per Variable -
+        # need to filter on VariableGrouping~ObservationClass)
         # (1) WHERE size(coll)=1
         q = """
         MATCH (v:Variable)<-[r:HAS_VARIABLE]-(ds:Dataset)    
@@ -465,3 +461,39 @@ class CdiscStandardLoader(ModelApplier):
         self.query(q)
 
         print("SDTM TTL Loaded and Linked")
+
+    def propagate_relationships(self, on_children=True, on_parents=True):  # not used kept for code reference
+        la = ('' if (on_children and on_parents) or not on_children else '<')
+        ra = ('' if (on_children and on_parents) or not on_parents else '>')
+        q = f"""
+        //propagate_relationships_of_parents_on_children
+        MATCH (c:Class)
+        OPTIONAL MATCH path = (c){la}-[:SUBCLASS_OF*1..50]-{ra}(parent)<-[r1:FROM]-(r:Relationship)-[r2:TO]->(fromto)
+        WITH c, collect(path) as coll
+        OPTIONAL MATCH path = (c){la}-[:SUBCLASS_OF*1..50]-{ra}(parent)<-[r1:TO]-(r:Relationship)-[r2:FROM]->(fromto)
+        WITH c, coll + collect(path) as coll
+        UNWIND coll as path
+        WITH 
+            c, 
+            nodes(path)[-1] as fromto, 
+            nodes(path)[-2] as r,
+            relationships(path)[-1] as r2, 
+            relationships(path)[-2] as r1
+        WITH *, apoc.text.join([k in [x in keys(r) WHERE x <> 'uri'] | '`' + k + '`: "' + r[k] + '"'], ", ") as r_params  
+        WITH *, CASE WHEN r_params = '' THEN '' ELSE '{' + r_params + '}' END as r_params
+        WITH *, 
+         '
+                WITH $c as c
+                MATCH (fromto) WHERE id(fromto) = $id_fromto
+                MERGE (c)<-[:`'+type(r1)+'`]-(:Relationship' + r_params +')-[:`'+type(r2)+'`]->(fromto) 
+         ' as q 
+        WITH c, fromto, q
+        call apoc.do.when(
+            NOT EXISTS ( (c)--(:Relationship)--(fromto) ), 
+            q,
+            '',    
+            {{c:c, id_fromto:id(fromto)}}
+        ) YIELD value
+        RETURN value 
+        """
+        self.query(q)

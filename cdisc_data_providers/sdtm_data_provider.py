@@ -139,8 +139,16 @@ class SDTMDataProvider(DataProvider):
         RETURN
         collect({from: fromclass.label, to: class.label, type: rel.relationship_type, short_label: class.short_label}) as rels,
         collect(distinct fromclass.label) + collect(distinct class.label) as classes,
-        apoc.coll.toSet([triple in [triple in collect([class.label, sdc.Core, class.CoreClass]) where triple[1] = "Required" or triple[2]] | triple[0]])
-            as req_classes,            
+        apoc.coll.toSet(
+                [triple in [ 
+                    triple in collect([class.label, sdc.Core, class.create]) 
+                    where triple[1] = "Req" or triple[2]] | triple[0]
+                ] + 
+                [pair in [
+                    pair in collect([fromclass.label, fromclass.create]) 
+                    where pair[1]] | pair[0]
+                ] // Ensure Domain is in required classes
+            ) as req_classes,         
         apoc.map.fromPairs(
             [y in   
                 [x in collect(distinct {class:class, sdc:sdc, r:r}) WHERE NOT x['r'] IS NULL] | //filtering for classes with existing Column MAPS_TO_CLASS relationship
