@@ -1,2 +1,2 @@
 git+https://${GIT_TOKEN_PUBLIC}@github.com/GSK-Biostatistics/tab2neo.git
-jupyter
+jupyter==1.0.0
