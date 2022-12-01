@@ -96,7 +96,7 @@
       "properties": {
         "_columnname_": "TC2",
         "_domain_": "AE",
-        "Core": "Required"
+        "Core": "Req"
       },
       "style": {
         "node-color": "#009ce0",
@@ -238,7 +238,7 @@
         "label": "test_class_6",
         "short_label": "tc6",
         "count": 2,
-        "CoreClass": true
+        "create": true
       },
       "style": {}
     },
