@@ -1,4 +1,7 @@
 # Installation Instructions
+`pip install neo4cdisc`
+
+Otherwise if you would like to set up development environment follow the steps below:
 
 ## Prerequisite
 - Clone the repository.
