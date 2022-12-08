@@ -30,10 +30,10 @@ for line in requirements:
 
 setuptools.setup(
     name="neo4cdisc",                           # This is the name of the package
-    version="1.0.1.0",                      # Release.Major Feature.Minor Feature.Bug Fix
+    version="1.0.1.1",                      # Release.Major Feature.Minor Feature.Bug Fix
     author="Alexey Kuznetsov",              # Full name of the author
     description="Clinical Linked Data: Example of loading the FDA CDISC pilot study into Neo4J using the tab2neo python package",
-    long_description=long_description,      # Long description read from the the readme file
+    #long_description=long_description,      # Long description read from the the readme file
     long_description_content_type="text/markdown",
     packages=setuptools.find_packages(include=[
         "cdisc_model_managers",
