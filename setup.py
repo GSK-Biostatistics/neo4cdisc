@@ -2,7 +2,7 @@ import setuptools
 import os
 
 with open("README.md", "r") as fh:
-    long_description = fh.read()
+    long_description = "https://github.com/GSK-Biostatistics/neo4cdisc#neo4cdisc"
 
 def read_text(file_name: str):
     return open(os.path.join(file_name)).read()
