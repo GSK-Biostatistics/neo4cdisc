@@ -2,6 +2,7 @@
 
 
 [Example](CDISC Example.ipynb) of loading the FDA CDISC pilot study into Neo4J using the [tab2neo](https://github.com/GSK-Biostatistics/tab2neo) python package. 
+IMPORTANT NOTE: tested on **versions 4.3.6 and 4.4.11 of Neo4j**
 
 It uses a simple approach on importing column based metadata and data into Neo4j using rows as nodes and columns as properties for the nodes.
 The imported nodes are then reshaped to show relationships found in metadata and also relate the metadata with data.

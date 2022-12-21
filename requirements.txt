@@ -1,2 +1,1 @@
-tab2neo
-jupyter==1.0.0
+tab2neo==1.1.1.1
