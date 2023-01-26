@@ -100,16 +100,12 @@ class CdiscModelManager(ModelManager):
                ELSE
                    v.Label
                END
-           SET v.short_label = CASE WHEN $short_label_bool 
-           THEN
+           SET v.short_label = 
                CASE WHEN v.n_with_same_name > 1 THEN 
                      d.Dataset + v.Variable
                ELSE
                      v.Variable
                END
-           ELSE
-               NULL
-           END
            SET v.create = False
            // for the DM table, like all the variable to the (soon to be) subject class, otherwise link to the dataset class
            WITH d, v
