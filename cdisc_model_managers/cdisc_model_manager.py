@@ -100,7 +100,7 @@ class CdiscModelManager(ModelManager):
                ELSE
                    v.Label
                END
-           SET v.shot_label = CASE WHEN $short_label_bool 
+           SET v.short_label = CASE WHEN $short_label_bool 
            THEN
                CASE WHEN v.n_with_same_name > 1 THEN 
                      d.Dataset + v.Variable
