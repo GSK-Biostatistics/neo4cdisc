@@ -15,7 +15,7 @@ class CdiscModelManager(ModelManager):
         in Neo4j
         :param create_term_indexes: Whether to create indexes for each Class that HAS_CONTROLLED_TERM (can be done later
         during reshaping)
-        :param create_term_indexes: Whether to create the short_label property on Relationship (Variable) nodes
+        :param create_short_label: Whether to create the short_label property on Relationship (Variable) nodes
         :return: None
         """
         print("Creating indexes on Class and Term")
