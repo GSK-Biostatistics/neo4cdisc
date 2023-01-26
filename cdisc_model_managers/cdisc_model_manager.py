@@ -129,7 +129,7 @@ class CdiscModelManager(ModelManager):
            YIELD value
            RETURN value           
            """
-        self.query(q, {'datasets': ['DM'], 'short_label_bool': create_short_label})
+        self.query(q, {'datasets': ['DM']})
 
         print("Creating Class from dataElement and Relationship from Variable")
         q = """
