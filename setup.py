@@ -2,7 +2,7 @@ import setuptools
 import os
 
 with open("README.md", "r") as fh:
-    long_description = fh.read()
+    long_description = "https://github.com/GSK-Biostatistics/neo4cdisc#neo4cdisc"
 
 def read_text(file_name: str):
     return open(os.path.join(file_name)).read()
@@ -30,7 +30,7 @@ for line in requirements:
 
 setuptools.setup(
     name="neo4cdisc",                           # This is the name of the package
-    version="1.0.2.0",                      # Release.Major Feature.Minor Feature.Bug Fix
+    version="1.0.3.0",                      # Release.Major Feature.Minor Feature.Bug Fix
     author="Alexey Kuznetsov",              # Full name of the author
     description="Clinical Linked Data: Example of loading the FDA CDISC pilot study into Neo4J using the tab2neo python package",
     #long_description=long_description,      # Long description read from the the readme file
