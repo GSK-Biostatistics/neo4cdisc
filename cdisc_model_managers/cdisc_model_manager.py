@@ -9,12 +9,13 @@ class CdiscModelManager(ModelManager):
             print(f"---------------- {self.__class__} initialized -------------------")
 
     ## ---------------------------- Generate model from excel SDTM spec ----------------------------- ##
-    def generate_excel_based_model(self, label_terms: bool = False, create_term_indexes: bool = False):
+    def generate_excel_based_model(self, label_terms: bool = False, create_term_indexes: bool = False, create_short_label: bool = False):
         """
         Run ExcelStandardLoader.load_standard() to prepare metadata from excel (and SDTM ontology form GitHub)
         in Neo4j
-        :param create_term_indexes: weather to create indexes for each Class that HAS_CONTROLLED_TERM (can be done later
+        :param create_term_indexes: Whether to create indexes for each Class that HAS_CONTROLLED_TERM (can be done later
         during reshaping)
+        :param create_short_label: Whether to create the short_label property on Relationship (Variable) nodes
         :return: None
         """
         print("Creating indexes on Class and Term")
@@ -98,12 +99,12 @@ class CdiscModelManager(ModelManager):
                    d.Description + ' ' + v.Label
                ELSE
                    v.Label
-               END                
-           SET v.short_label =             
+               END
+           SET v.short_label = 
                CASE WHEN v.n_with_same_name > 1 THEN 
-                   d.Dataset + v.Variable
+                     d.Dataset + v.Variable
                ELSE
-                   v.Variable
+                     v.Variable
                END
            SET v.create = False
            // for the DM table, like all the variable to the (soon to be) subject class, otherwise link to the dataset class
@@ -134,7 +135,7 @@ class CdiscModelManager(ModelManager):
         q = """
                MATCH (de:DataElement)
                OPTIONAL MATCH (de)-[:dataElementRole]->(dar:DataElementRole)
-               WITH DISTINCT de,                                   
+               WITH DISTINCT de,                                 
                {
                    label: 
                        CASE de.dataElementName
@@ -172,14 +173,14 @@ class CdiscModelManager(ModelManager):
                MATCH (d:Dataset)-[:HAS_VARIABLE]->(v:Variable)-[:IS_DATA_ELEMENT]->(de:DataElement)
                SET v:Relationship
                SET v.label = v.Label
-               SET v.short_label = v.Variable
+               SET v.short_label = CASE WHEN $short_label_bool THEN v.Variable ELSE NULL END
                SET v.relationship_type = map.label
                MERGE (dehl)<-[:TO]-(v)-[:FROM]->(d)  
                WITH *
                MATCH (v)-[:HAS_CONTROLLED_TERM]->(t:Term)
                MERGE (dehl)-[:HAS_CONTROLLED_TERM]->(t)
                """
-        self.query(q)
+        self.query(q, {'short_label_bool': create_short_label})
 
         # In the DM dateset, migrate the relationships going TO variables FROM the Unique Subject Identifier
         # variable/relationship to the Subject Class (created from the USI variable above)
