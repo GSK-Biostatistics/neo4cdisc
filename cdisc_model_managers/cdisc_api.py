@@ -8,6 +8,8 @@ class CDISCAPI():
         self.baseURL = baseURL        
         self.token = token
 
+    assert os.environ.get("CDISC_LIB_KEY", "").strip(), 'Enviorment var CDISC_LIB_KEY is not defined'
+
     def query(self, queryEndpoint = "", queryPath = ""):
         resp = requests.get(
             self.baseURL + queryEndpoint + queryPath, 
